@@ -1,0 +1,16 @@
+body {
+    background: #6d7359;
+}
+
+.block {
+    background-size: contain;
+    background-repeat: no-repeat; 
+}
+
+.avatar {
+    background-image: url("../images/avatar.png");
+}
+
+.chao {
+    background-image: url("../images/chao.png");
+}
