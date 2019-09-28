@@ -34,34 +34,44 @@ class Avatar {
     }
 }
 
-let avatar = new Avatar(8, 8);
+let avatar = new Avatar(8, 3);
 
 let moveAvatar = (e) => {
+    let hasMoved = 0;
+
     if (e.key == "w") {
         avatar.moveUp();
+        hasMoved = 1;
     } else if (e.key == "s") {
         avatar.moveDown();
+        hasMoved = 1;
     } else if (e.key == "d") {
         avatar.moveRight();
-    } else {
+        hasMoved = 1;
+    } else if (e.key == "a"){
         avatar.moveLeft();
+        hasMoved = 1;
     }
 
-    gameSpace[avatar.prevX][avatar.prevY] = 0;
-    gameSpace[avatar.x][avatar.y] = 1;
+    if (hasMoved) {
+        gameSpace[avatar.prevX][avatar.prevY] = 0;
+        gameSpace[avatar.x][avatar.y] = 1;
 
-    let row = document.querySelectorAll('.row')[avatar.y];
-    let blocks = row.querySelectorAll("*");
-    let avatarPosition = blocks[avatar.x]
+        // debugger
 
-    let prevRow = document.querySelectorAll('.row')[avatar.prevY];
-    let prevBlocks = prevRow.querySelectorAll("*");
-    let prevAvatarPosition = prevBlocks[avatar.prevX]
+        let row = document.querySelectorAll('.row')[avatar.y];
+        let blocks = row.querySelectorAll(".block");
+        let avatarPosition = blocks[avatar.x];
 
-    avatarPosition.classList.toggle("chao");
-    avatarPosition.classList.toggle("avatar");
-    prevAvatarPosition.classList.toggle("avatar");
-    prevAvatarPosition.classList.toggle("chao");
+        let prevRow = document.querySelectorAll('.row')[avatar.prevY];
+        let prevBlocks = prevRow.querySelectorAll(".block");
+        let prevAvatarPosition = prevBlocks[avatar.prevX]
+
+        avatarPosition.classList.toggle("chao");
+        avatarPosition.classList.toggle("avatar");
+        prevAvatarPosition.classList.toggle("avatar");
+        prevAvatarPosition.classList.toggle("chao");
+    };
 };
 
 document.addEventListener('keypress', moveAvatar);
