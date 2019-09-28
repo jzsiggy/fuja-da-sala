@@ -1,7 +1,8 @@
 class Avatar {
     constructor (x, y) {
     this.x = x,
-    this.y = y
+    this.y = y, 
+    this.collectibles = []
     }
 
     moveUp() {
@@ -34,44 +35,37 @@ class Avatar {
     }
 }
 
-let avatar = new Avatar(8, 3);
+let avatar = new Avatar(0, 0);
 
 let moveAvatar = (e) => {
-    let hasMoved = 0;
-
     if (e.key == "w") {
         avatar.moveUp();
-        hasMoved = 1;
     } else if (e.key == "s") {
         avatar.moveDown();
-        hasMoved = 1;
     } else if (e.key == "d") {
         avatar.moveRight();
-        hasMoved = 1;
-    } else if (e.key == "a"){
+    } else if (e.key == "a") {
         avatar.moveLeft();
-        hasMoved = 1;
     }
+    moveDomElements();
+};
 
-    if (hasMoved) {
-        gameSpace[avatar.prevX][avatar.prevY] = 0;
-        gameSpace[avatar.x][avatar.y] = 1;
+let moveDomElements = () => {
+    gameSpace[avatar.prevY][avatar.prevX] = 0;
+    gameSpace[avatar.y][avatar.x] = 1;
 
-        // debugger
+    let row = document.querySelectorAll('.row')[avatar.y];
+    let blocks = row.querySelectorAll(".block");
+    let avatarPosition = blocks[avatar.x];
 
-        let row = document.querySelectorAll('.row')[avatar.y];
-        let blocks = row.querySelectorAll(".block");
-        let avatarPosition = blocks[avatar.x];
+    let prevRow = document.querySelectorAll('.row')[avatar.prevY];
+    let prevBlocks = prevRow.querySelectorAll(".block");
+    let prevAvatarPosition = prevBlocks[avatar.prevX];
 
-        let prevRow = document.querySelectorAll('.row')[avatar.prevY];
-        let prevBlocks = prevRow.querySelectorAll(".block");
-        let prevAvatarPosition = prevBlocks[avatar.prevX]
-
-        avatarPosition.classList.toggle("chao");
-        avatarPosition.classList.toggle("avatar");
-        prevAvatarPosition.classList.toggle("avatar");
-        prevAvatarPosition.classList.toggle("chao");
-    };
+    avatarPosition.classList.toggle("chao");
+    avatarPosition.classList.toggle("avatar");
+    prevAvatarPosition.classList.toggle("avatar");
+    prevAvatarPosition.classList.toggle("chao");
 };
 
 document.addEventListener('keypress', moveAvatar);
