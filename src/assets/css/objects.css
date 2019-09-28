@@ -1,0 +1,23 @@
+.chao {
+    background-image: url("../images/chao.jpg");
+}
+
+.table {
+    background-image: url("../images/objetos/table.png"), url("../images/chao.jpg");
+}
+
+.blackboard {
+    background-image: url("../images/objetos/blacboard.png"), url("../images/chao.jpg");
+}
+
+.computer {
+    background-image: url("../images/objetos/computer.png"), url("../images/chao.jpg");
+}
+
+.vase {
+    background-image: url("../images/objetos/vase.png"), url("../images/chao.jpg");
+}
+
+.door {
+    background-image: url("../images/objetos/door.png"), url("../images/chao.jpg");
+}

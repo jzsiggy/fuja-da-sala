@@ -1,0 +1,19 @@
+.avatar {
+    background-image: url("../images/personagens/coe.png"), url("../images/chao.jpg");
+}
+
+.sicuto {
+    background-image: url("../images/personagens/sicuto.png"), url("../images/chao.jpg");
+}
+
+.abe {
+    background-image: url("../images/personagens/abe.png"), url("../images/chao.jpg");
+}
+
+.gui {
+    background-image: url("../images/personagens/gui.png"), url("../images/chao.jpg");
+}
+
+.jesus {
+    background-image: url("../images/personagens/jesus.png"), url("../images/chao.jpg");
+}
