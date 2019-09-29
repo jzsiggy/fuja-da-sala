@@ -1,38 +1,41 @@
 class Avatar {
     constructor (x, y) {
-    this.x = x,
-    this.y = y, 
-    this.collectibles = []
-    }
-
+        this.x = x,
+        this.y = y,
+        this.collectibles = []
+    };
     moveUp() {
-        this.prevX = this.x;
-        this.prevY = this.y;
-        if (this.y > 0) {
+        if (this.y > 0 && gameSpace[this.y - 1][this.x] == 0) {
+            this.prevX = this.x;
+            this.prevY = this.y;    
             this.y--;
-        };
-    }
+            moveDomElements();
+        };   
+    };
     moveDown() {
-        this.prevX = this.x;
-        this.prevY = this.y;
-        if (this.y < gameSpace.length - 1) {
+        if (this.y < gameSpace.length - 1 && gameSpace[this.y + 1][this.x] == 0) {
+            this.prevX = this.x;
+            this.prevY = this.y;
             this.y++;
+            moveDomElements();
         };
-    }
+    };
     moveLeft() {
-        this.prevX = this.x;
-        this.prevY = this.y;
-        if (this.x > 0) {
+        if (this.x > 0 && gameSpace[this.y][this.x - 1] == 0) {
+            this.prevX = this.x;
+            this.prevY = this.y;
             this.x--;
+            moveDomElements();
         };
-    }
+    };
     moveRight() {
-        this.prevX = this.x;
-        this.prevY = this.y;
-        if (this.x < gameSpace[this.y].length - 1) {
+        if (this.x < gameSpace[this.y].length - 1 && gameSpace[this.y][this.x + 1] == 0) {
+            this.prevX = this.x;
+            this.prevY = this.y;
             this.x++;
+            moveDomElements();
         };
-    }
+    };
 }
 
 let avatar = new Avatar(0, 0);
@@ -47,7 +50,6 @@ let moveAvatar = (e) => {
     } else if (e.key == "a") {
         avatar.moveLeft();
     }
-    moveDomElements();
 };
 
 let moveDomElements = () => {
