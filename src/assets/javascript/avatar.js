@@ -5,35 +5,51 @@ class Avatar {
         this.collectibles = []
     };
     moveUp() {
-        if (this.y > 0 && gameSpace[this.y - 1][this.x] == 0) {
-            this.prevX = this.x;
-            this.prevY = this.y;    
-            this.y--;
-            moveDomElements();
+        if (this.y > 0) {
+            if (gameSpace[this.y - 1][this.x] == 0) {
+                this.prevX = this.x;
+                this.prevY = this.y;    
+                this.y--;
+                moveDomElements();
+            } else {
+                console.log(tradutor[gameSpace[this.y - 1][this.x]]["message"]);
+            }
         };   
     };
     moveDown() {
-        if (this.y < gameSpace.length - 1 && gameSpace[this.y + 1][this.x] == 0) {
-            this.prevX = this.x;
-            this.prevY = this.y;
-            this.y++;
-            moveDomElements();
+        if (this.y < gameSpace.length - 1) {
+            if (gameSpace[this.y + 1][this.x] == 0) {
+                this.prevX = this.x;
+                this.prevY = this.y;
+                this.y++;
+                moveDomElements();
+            } else {
+                console.log(tradutor[gameSpace[this.y + 1][this.x]]["message"]);
+            }
         };
     };
     moveLeft() {
-        if (this.x > 0 && gameSpace[this.y][this.x - 1] == 0) {
-            this.prevX = this.x;
-            this.prevY = this.y;
-            this.x--;
-            moveDomElements();
+        if (this.x > 0) {
+            if (gameSpace[this.y][this.x - 1] == 0) {
+                this.prevX = this.x;
+                this.prevY = this.y;
+                this.x--;
+                moveDomElements();
+            } else {
+                console.log(tradutor[gameSpace[this.y][this.x - 1]]["message"]);
+            }
         };
     };
     moveRight() {
-        if (this.x < gameSpace[this.y].length - 1 && gameSpace[this.y][this.x + 1] == 0) {
-            this.prevX = this.x;
-            this.prevY = this.y;
-            this.x++;
-            moveDomElements();
+        if (this.x < gameSpace[this.y].length - 1) {
+            if (gameSpace[this.y][this.x + 1] == 0) {
+                this.prevX = this.x;
+                this.prevY = this.y;
+                this.x++;
+                moveDomElements();
+            } else {
+                console.log(tradutor[gameSpace[this.y][this.x + 1]]["message"]);
+            }
         };
     };
 }
