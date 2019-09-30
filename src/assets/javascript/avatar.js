@@ -91,14 +91,12 @@ let moveDomAvatar = () => {
 };
 
 let interact = (id) => {
-    let roomSpace = document.querySelector("#room-space");
+    // let roomSpace = document.querySelector("#room-space");
     if ("message" in tradutor[id]) {
-        let speechDiv = document.createElement("div");
-        // speechDiv.style.position = "absolute";
+        let speechDiv = document.querySelector(".speech-div");
         speechDiv.innerText = tradutor[id]["message"];
-        roomSpace.appendChild(speechDiv);
         setTimeout(() => {
-            roomSpace.removeChild(speechDiv);
+            speechDiv.innerText = "";
         }, 1000);
     };
 };
