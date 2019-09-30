@@ -10,9 +10,10 @@ class Avatar {
                 this.prevX = this.x;
                 this.prevY = this.y;    
                 this.y--;
-                moveDomElements();
+                moveDomAvatar();
             } else {
                 console.log(tradutor[gameSpace[this.y - 1][this.x]]["message"]);
+                interact(gameSpace[this.y - 1][this.x]);
             }
         };   
     };
@@ -22,9 +23,10 @@ class Avatar {
                 this.prevX = this.x;
                 this.prevY = this.y;
                 this.y++;
-                moveDomElements();
+                moveDomAvatar();
             } else {
                 console.log(tradutor[gameSpace[this.y + 1][this.x]]["message"]);
+                interact(gameSpace[this.y + 1][this.x]);
             }
         };
     };
@@ -34,9 +36,10 @@ class Avatar {
                 this.prevX = this.x;
                 this.prevY = this.y;
                 this.x--;
-                moveDomElements();
+                moveDomAvatar();
             } else {
                 console.log(tradutor[gameSpace[this.y][this.x - 1]]["message"]);
+                interact(gameSpace[this.y][this.x - 1]);
             }
         };
     };
@@ -46,9 +49,10 @@ class Avatar {
                 this.prevX = this.x;
                 this.prevY = this.y;
                 this.x++;
-                moveDomElements();
+                moveDomAvatar();
             } else {
                 console.log(tradutor[gameSpace[this.y][this.x + 1]]["message"]);
+                interact(gameSpace[this.y][this.x + 1]);
             }
         };
     };
@@ -68,7 +72,7 @@ let moveAvatar = (e) => {
     }
 };
 
-let moveDomElements = () => {
+let moveDomAvatar = () => {
     gameSpace[avatar.prevY][avatar.prevX] = 0;
     gameSpace[avatar.y][avatar.x] = 1;
 
@@ -84,6 +88,19 @@ let moveDomElements = () => {
     avatarPosition.classList.toggle("avatar");
     prevAvatarPosition.classList.toggle("avatar");
     prevAvatarPosition.classList.toggle("chao");
+};
+
+let interact = (id) => {
+    let roomSpace = document.querySelector("#room-space");
+    if ("message" in tradutor[id]) {
+        let speechDiv = document.createElement("div");
+        // speechDiv.style.position = "absolute";
+        speechDiv.innerText = tradutor[id]["message"];
+        roomSpace.appendChild(speechDiv);
+        setTimeout(() => {
+            roomSpace.removeChild(speechDiv);
+        }, 1000);
+    };
 };
 
 document.addEventListener('keypress', moveAvatar);
