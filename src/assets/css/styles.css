@@ -16,8 +16,17 @@ body {
 
 #room-space {
     background: #e3a586;
-    /* background-image: url("../images/chao.jpg"); */
     /* border: solid 1px red; */
+}
+
+.speech-div {
+    min-height: 100px;
+    background: black;
+    color: white;
+    font-family: 'Turret Road', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .inventory {
