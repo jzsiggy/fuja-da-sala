@@ -71,7 +71,7 @@ const tradutor = {
     2: {
         class: "sicuto",
         collectible: [],
-        message: "",
+        message: "Eu sou o Sicu",
     },
     3: {
         class: "marcelo",
@@ -81,22 +81,22 @@ const tradutor = {
     4: {
         class: "abe",
         collectible: ["html"],
-        message: "salve",
+        message: "Eu sou Abe",
     },
     5: {
         class: "jesus",
         collectible: [],
-        message: "",
+        message: "Eu sou Jesus",
     },
     6: {
         class: "gui",
         collectible: [],
-        message: "",
+        message: "Eu sou Gui",
     },
     7: {
         class: "juka",
         collectible: [],
-        message: "",
+        message: "Eu sou Juks",
     },
     8: {
         class: "table",
