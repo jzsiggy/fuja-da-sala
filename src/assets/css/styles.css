@@ -20,8 +20,9 @@ body {
 }
 
 .speech-div {
+    border: 5px solid #FFB700;
     min-height: 100px;
-    background: black;
+    background: #0C96E8;
     color: white;
     font-family: 'Turret Road', cursive;
     display: flex;
