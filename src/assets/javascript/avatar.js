@@ -99,6 +99,12 @@ let interact = (id) => {
             speechDiv.innerText = "";
         }, 1000);
     };
+
+    if ("collectible" in tradutor[id]) {
+        if (tradutor[id]["collectible"]) {
+            avatar.collectibles.push(tradutor[id]["collectible"]);
+        };
+    };
 };
 
 document.addEventListener('keypress', moveAvatar);
