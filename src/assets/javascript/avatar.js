@@ -90,8 +90,27 @@ let moveDomAvatar = () => {
     prevAvatarPosition.classList.toggle("chao");
 };
 
+// let itemInInventory = (item) => {
+//     let inventory = document.querySelector(".inventory > ul");
+//     let elements = inventory.querySelectorAll("li");
+//     console.log(elements)
+//     elements.forEach(element => {
+//         if (element.innerText = item) {
+//             console.log(`${item} is already in inventory`)
+//             return true;
+//         };
+//     });
+//     return false;
+// };
+
+let updateInventory = (item) => {
+    let inventory = document.querySelector(".inventory > ul");
+    let element = document.createElement('li');
+    element.innerText = item;
+    inventory.appendChild(element);
+};
+
 let interact = (id) => {
-    // let roomSpace = document.querySelector("#room-space");
     if ("message" in tradutor[id]) {
         let speechDiv = document.querySelector(".speech-div");
         speechDiv.innerText = tradutor[id]["message"];
@@ -102,7 +121,10 @@ let interact = (id) => {
 
     if ("collectible" in tradutor[id]) {
         if (tradutor[id]["collectible"]) {
-            avatar.collectibles.push(tradutor[id]["collectible"]);
+            if (!avatar.collectibles.includes(tradutor[id]["collectible"])) {
+                avatar.collectibles.push(tradutor[id]["collectible"]);
+                updateInventory(tradutor[id]["collectible"]);
+            };
         };
     };
 };
