@@ -12,6 +12,7 @@ class Avatar {
                 this.y--;
                 moveDomAvatar();
             } else {
+                // console.log("interaction");
                 console.log(tradutor[gameSpace[this.y - 1][this.x]]["message"]);
                 interact(gameSpace[this.y - 1][this.x]);
             }
@@ -25,7 +26,8 @@ class Avatar {
                 this.y++;
                 moveDomAvatar();
             } else {
-                console.log(tradutor[gameSpace[this.y + 1][this.x]]["message"]);
+                // console.log("interaction");
+                // console.log(tradutor[gameSpace[this.y + 1][this.x]]["message"]);
                 interact(gameSpace[this.y + 1][this.x]);
             }
         };
@@ -38,7 +40,8 @@ class Avatar {
                 this.x--;
                 moveDomAvatar();
             } else {
-                console.log(tradutor[gameSpace[this.y][this.x - 1]]["message"]);
+                // console.log("interaction");
+                // console.log(tradutor[gameSpace[this.y][this.x - 1]]["message"]);
                 interact(gameSpace[this.y][this.x - 1]);
             }
         };
@@ -51,7 +54,8 @@ class Avatar {
                 this.x++;
                 moveDomAvatar();
             } else {
-                console.log(tradutor[gameSpace[this.y][this.x + 1]]["message"]);
+                // console.log("interaction");
+                // console.log(tradutor[gameSpace[this.y][this.x + 1]]["message"]);
                 interact(gameSpace[this.y][this.x + 1]);
             }
         };
@@ -106,27 +110,37 @@ let moveDomAvatar = () => {
 let updateInventory = (item) => {
     let inventory = document.querySelector(".inventory > ul");
     let element = document.createElement('li');
+    element.style.listStyle = "none";
+    // element.style.fontFamily = "'Turret Road', cursive;";
     element.innerText = item;
     inventory.appendChild(element);
 };
 
-let interact = (id) => {
-    if ("message" in tradutor[id]) {
-        let speechDiv = document.querySelector(".speech-div");
-        speechDiv.innerText = tradutor[id]["message"];
-        setTimeout(() => {
-            speechDiv.innerText = "";
-        }, 1000);
+let hasPreRequisites = (hasList, needsList) => {
+    for (let item of needsList) {
+        if (!hasList.includes(item)) {
+            return false;
+        };
     };
+    return true;
+};
 
-    if ("collectible" in tradutor[id]) {
+let interact = (id) => {
+    let speechDiv = document.querySelector(".speech-div");
+    if (hasPreRequisites(avatar.collectibles, tradutor[id]["prerequisites"])) {
+        speechDiv.innerText = tradutor[id]["successMessage"];
         if (tradutor[id]["collectible"]) {
             if (!avatar.collectibles.includes(tradutor[id]["collectible"])) {
                 avatar.collectibles.push(tradutor[id]["collectible"]);
                 updateInventory(tradutor[id]["collectible"]);
             };
         };
+    } else {
+        speechDiv.innerText = tradutor[id]["errorMessage"];
     };
+    setTimeout(() => {
+        speechDiv.innerText = "";
+    }, 1000);
 };
 
 document.addEventListener('keypress', moveAvatar);

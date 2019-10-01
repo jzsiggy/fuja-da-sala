@@ -71,64 +71,85 @@ const tradutor = {
     2: {
         class: "sicuto",
         collectible: "",
-        message: "Eu sou o Sicu",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "Eu sou o Sicu",
     },
     3: {
         class: "marcelo",
         collectible: "",
-        message: "",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "",
     },
     4: {
         class: "abe",
         collectible: "",
-        message: "Eu sou Abe",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "Eu sou Abe",
     },
     5: {
         class: "jesus",
         collectible: "",
-        message: "Eu sou Jesus",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "Eu sou Jesus",
     },
     6: {
         class: "gui",
         collectible: "chave",
-        message: "Eu sou Gui e te dei uma chave",
+        prerequisites: ["plant"],
+        errorMessage: "Não tens o suficiente para meu objeto",
+        successMessage: "Ganhou uma chave",
     },
     7: {
         class: "juka",
         collectible: "",
-        message: "Eu sou Juks",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "Eu sou Juks",
     },
     8: {
         class: "table",
         collectible: "",
-        message: "",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "",
     },
     9: {
         class: "blackboard",
         collectible: "",
-        message: "",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "",
     },
     10: {
         class: "computer",
         collectible: "",
-        message: "",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "",
     },
     11: {
         class: "vase",
-        collectible: "",
-        message: "",
+        collectible: "plant",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "",
     },
     12: {
         class: "door",
         collectible: "",
-        message: "",
+        prerequisites: [],
+        errorMessage: "",
+        successMessage: "",
     },
 }
 
 const createRow = (arrayOfBlocks) => {
+    let roomSpace = document.querySelector("#room-space");
     let width = window.innerWidth;
-
-    let roomSpace = document.querySelector('#room-space');
 
     let row = document.createElement('div');
     row.style.display = "flex";
