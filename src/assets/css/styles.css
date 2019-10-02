@@ -47,7 +47,17 @@ body {
 .block {
     background-size: contain;
     background-repeat: no-repeat; 
-    /* border: 1px solid red; */
     min-width: 35px;
     min-height: 35px;
+}
+
+.big-blackboard {
+    position: absolute;
+    width : 500px;
+    height : 500px;
+    background-color : white;
+    opacity: 0.5;
+    top : 0;
+    margin: auto;
+
 }
