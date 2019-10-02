@@ -2,9 +2,11 @@ class Avatar {
     constructor (x, y) {
         this.x = x,
         this.y = y,
-        this.collectibles = []
+        this.collectibles = [],
+        this.direction = "down";
     };
     moveUp() {
+        this.direction = "up";
         if (this.y > 0) {
             if (gameSpace[this.y - 1][this.x] == 0) {
                 this.prevX = this.x;
@@ -17,6 +19,7 @@ class Avatar {
         };   
     };
     moveDown() {
+        this.direction = "down";
         if (this.y < gameSpace.length - 1) {
             if (gameSpace[this.y + 1][this.x] == 0) {
                 this.prevX = this.x;
@@ -29,6 +32,7 @@ class Avatar {
         };
     };
     moveLeft() {
+        this.direction = "left";
         if (this.x > 0) {
             if (gameSpace[this.y][this.x - 1] == 0) {
                 this.prevX = this.x;
@@ -41,6 +45,7 @@ class Avatar {
         };
     };
     moveRight() {
+        this.direction ="right";
         if (this.x < gameSpace[this.y].length - 1) {
             if (gameSpace[this.y][this.x + 1] == 0) {
                 this.prevX = this.x;
@@ -65,8 +70,13 @@ let moveAvatar = (e) => {
         avatar.moveRight();
     } else if (e.key == "a") {
         avatar.moveLeft();
-    }
+    };
+    console.log(avatar.direction);
 };
+
+let setDomAvatarDirection = () => {
+    
+}
 
 let moveDomAvatar = () => {
     gameSpace[avatar.prevY][avatar.prevX] = 0;

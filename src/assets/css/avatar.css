@@ -1,0 +1,35 @@
+.avatar {
+    background-image: url("../images/personagens/directions/down1.png"), url("../images/chao.jpg");
+}
+
+.avatar-up-1 {
+    background-image: url("../images/personagens/directions/up2.png"), url("../images/chao.jpg");
+}
+
+.avatar-up-2 {
+    background-image: url("../images/personagens/directions/up3.png"), url("../images/chao.jpg");
+}
+
+.avatar-down-1 {
+    background-image: url("../images/personagens/directions/down2.png"), url("../images/chao.jpg");
+}
+
+.avatar-down-2 {
+    background-image: url("../images/personagens/directions/down3.png"), url("../images/chao.jpg");
+}
+
+.avatar-left-1 {
+    background-image: url("../images/personagens/directions/left2.png"), url("../images/chao.jpg");
+}
+
+.avatar-left-2 {
+    background-image: url("../images/personagens/directions/left3.png"), url("../images/chao.jpg");
+}
+
+.avatar-right-1 {
+    background-image: url("../images/personagens/directions/right2.png"), url("../images/chao.jpg");
+}
+
+.avatar-right-2 {
+    background-image: url("../images/personagens/directions/right3.png"), url("../images/chao.jpg");
+}

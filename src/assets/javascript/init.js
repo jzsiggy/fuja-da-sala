@@ -33,18 +33,18 @@
 // ]
 
 let gameSpace = [   
-    [ 0, 0, 0, 0, 0, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0,11, 0, 0, 0, 0],
+    [ 0, 0, 0, 0, 0,10,10,10,10, 0, 0, 0, 0, 0, 0,12, 0, 0, 0, 0],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [ 0, 0, 0, 0, 0, 4, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [ 0, 0, 0, 0, 0, 8, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [ 0, 0, 0, 0, 0, 9, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0],
-    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0,12],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0,13],
     [ 0, 0, 0, 0, 0, 5, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [ 0, 0, 0, 0, 0, 8, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10, 0, 0, 0],
+    [ 0, 0, 0, 0, 0, 9, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8,11, 0, 0, 0],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11]
+    [12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12]
 ]
 
 gameSpace[avatar.y][avatar.x] = 1;
@@ -91,10 +91,10 @@ const tradutor = {
     },
     5: {
         class: "jesus",
-        collectible: "",
-        prerequisites: [],
-        errorMessage: "",
-        successMessage: "Eu sou Jesus",
+        collectible: "chave da moto",
+        prerequisites: ["plant", "chave"],
+        errorMessage: "Se nao tem os negocio ainda filhão",
+        successMessage: "Aqui esta minha moto",
     },
     6: {
         class: "gui",
@@ -111,38 +111,45 @@ const tradutor = {
         successMessage: "Eu sou Juks",
     },
     8: {
-        class: "table",
+        class: "coe",
         collectible: "",
         prerequisites: [],
         errorMessage: "",
         successMessage: "",
     },
     9: {
-        class: "blackboard",
+        class: "table",
         collectible: "",
         prerequisites: [],
         errorMessage: "",
         successMessage: "",
     },
     10: {
-        class: "computer",
+        class: "blackboard",
         collectible: "",
         prerequisites: [],
         errorMessage: "",
         successMessage: "",
     },
     11: {
-        class: "vase",
-        collectible: "plant",
+        class: "computer",
+        collectible: "",
         prerequisites: [],
         errorMessage: "",
         successMessage: "",
     },
     12: {
-        class: "door",
-        collectible: "",
+        class: "vase",
+        collectible: "plant",
         prerequisites: [],
         errorMessage: "",
+        successMessage: "Ganhou uma plantinha",
+    },
+    13: {
+        class: "door",
+        collectible: "",
+        prerequisites: ["chave", "plant", "chave da moto"],
+        errorMessage: "Ainda nao podes sair",
         successMessage: "",
     },
 }
