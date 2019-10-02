@@ -12,8 +12,6 @@ class Avatar {
                 this.y--;
                 moveDomAvatar();
             } else {
-                // console.log("interaction");
-                console.log(tradutor[gameSpace[this.y - 1][this.x]]["message"]);
                 interact(gameSpace[this.y - 1][this.x]);
             }
         };   
@@ -26,8 +24,6 @@ class Avatar {
                 this.y++;
                 moveDomAvatar();
             } else {
-                // console.log("interaction");
-                // console.log(tradutor[gameSpace[this.y + 1][this.x]]["message"]);
                 interact(gameSpace[this.y + 1][this.x]);
             }
         };
@@ -40,8 +36,6 @@ class Avatar {
                 this.x--;
                 moveDomAvatar();
             } else {
-                // console.log("interaction");
-                // console.log(tradutor[gameSpace[this.y][this.x - 1]]["message"]);
                 interact(gameSpace[this.y][this.x - 1]);
             }
         };
@@ -54,13 +48,11 @@ class Avatar {
                 this.x++;
                 moveDomAvatar();
             } else {
-                // console.log("interaction");
-                // console.log(tradutor[gameSpace[this.y][this.x + 1]]["message"]);
                 interact(gameSpace[this.y][this.x + 1]);
             }
         };
     };
-}
+};
 
 let avatar = new Avatar(0, 0);
 
@@ -94,19 +86,6 @@ let moveDomAvatar = () => {
     prevAvatarPosition.classList.toggle("chao");
 };
 
-// let itemInInventory = (item) => {
-//     let inventory = document.querySelector(".inventory > ul");
-//     let elements = inventory.querySelectorAll("li");
-//     console.log(elements)
-//     elements.forEach(element => {
-//         if (element.innerText = item) {
-//             console.log(`${item} is already in inventory`)
-//             return true;
-//         };
-//     });
-//     return false;
-// };
-
 let updateInventory = (item) => {
     let inventory = document.querySelector(".inventory > ul");
     let element = document.createElement('li');
@@ -127,20 +106,32 @@ let hasPreRequisites = (hasList, needsList) => {
 
 let interact = (id) => {
     let speechDiv = document.querySelector(".speech-div");
-    if (hasPreRequisites(avatar.collectibles, tradutor[id]["prerequisites"])) {
-        speechDiv.innerText = tradutor[id]["successMessage"];
-        if (tradutor[id]["collectible"]) {
-            if (!avatar.collectibles.includes(tradutor[id]["collectible"])) {
-                avatar.collectibles.push(tradutor[id]["collectible"]);
-                updateInventory(tradutor[id]["collectible"]);
+    if (tradutor[id]["class"] == "blackboard") {
+        parseBlackBoard();
+    }
+    else if (tradutor[id]["class"] == "computer") {
+        parseComputer();
+    }
+
+    else {
+        if (avatar.collectibles.includes(tradutor[id]["collectible"])) {
+            speechDiv.innerText = "Voce ja tem o que posso te dar";
+        } else if (hasPreRequisites(avatar.collectibles, tradutor[id]["prerequisites"])) {
+            speechDiv.innerText = tradutor[id]["successMessage"];
+            if (tradutor[id]["collectible"]) {
+                if (!avatar.collectibles.includes(tradutor[id]["collectible"])) {
+                    avatar.collectibles.push(tradutor[id]["collectible"]);
+                    updateInventory(tradutor[id]["collectible"]);
+                };
             };
+        } else {
+            speechDiv.innerText = tradutor[id]["errorMessage"];
         };
-    } else {
-        speechDiv.innerText = tradutor[id]["errorMessage"];
     };
+
     setTimeout(() => {
         speechDiv.innerText = "";
-    }, 1000);
+    }, 4000);
 };
 
 document.addEventListener('keypress', moveAvatar);
