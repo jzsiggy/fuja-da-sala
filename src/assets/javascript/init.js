@@ -66,7 +66,7 @@ const tradutor = {
         class: "chao",
     },
     1: {
-        class: "avatar",
+        class: "avatar-default",
     },
     2: {
         class: "sicuto",

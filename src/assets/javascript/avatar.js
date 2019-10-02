@@ -3,9 +3,12 @@ class Avatar {
         this.x = x,
         this.y = y,
         this.collectibles = [],
-        this.direction = "down";
+        this.direction = "up";
+        this.prevDirection = "";
+        this.class = "avatar-up-1";
     };
     moveUp() {
+        this.prevDirection = this.direction;
         this.direction = "up";
         if (this.y > 0) {
             if (gameSpace[this.y - 1][this.x] == 0) {
@@ -19,6 +22,7 @@ class Avatar {
         };   
     };
     moveDown() {
+        this.prevDirection = this.direction;
         this.direction = "down";
         if (this.y < gameSpace.length - 1) {
             if (gameSpace[this.y + 1][this.x] == 0) {
@@ -32,6 +36,7 @@ class Avatar {
         };
     };
     moveLeft() {
+        this.prevDirection = this.direction;
         this.direction = "left";
         if (this.x > 0) {
             if (gameSpace[this.y][this.x - 1] == 0) {
@@ -45,6 +50,7 @@ class Avatar {
         };
     };
     moveRight() {
+        this.prevDirection = this.direction;
         this.direction ="right";
         if (this.x < gameSpace[this.y].length - 1) {
             if (gameSpace[this.y][this.x + 1] == 0) {
@@ -57,9 +63,16 @@ class Avatar {
             }
         };
     };
+    changedDirection() {
+        if (this.direction != this.prevDirection) {
+            return true;
+        } else {
+            return  false;
+        };
+    };
 };
 
-let avatar = new Avatar(0, 0);
+let avatar = new Avatar(0, 5);
 
 let moveAvatar = (e) => {
     if (e.key == "w") {
@@ -74,9 +87,33 @@ let moveAvatar = (e) => {
     console.log(avatar.direction);
 };
 
-let setDomAvatarDirection = () => {
-    
-}
+let toggleDirectionClass = (direction, element) => {
+    if (avatar.changedDirection()) {
+        avatar.class = `avatar-${direction}-1`;
+    };
+    if (avatar.class == `avatar-${direction}-1`) {
+        element.classList = `block avatar-${direction}-2`;
+        avatar.class = `avatar-${direction}-2`;
+    } else if (avatar.class == `avatar-${direction}-2`) {
+        element.classList = `block avatar-${direction}-1`;
+        avatar.class = `avatar-${direction}-1`;
+    };
+};
+
+let setDomAvatarDirection = (element) => {
+    if (avatar.direction == "down") {
+        toggleDirectionClass("down", element);
+    };
+    if (avatar.direction == "up") {
+        toggleDirectionClass("up", element);
+    };
+    if (avatar.direction == "left") {
+        toggleDirectionClass("left", element);
+    };
+    if (avatar.direction == "right") {
+        toggleDirectionClass("right", element);
+    };
+};
 
 let moveDomAvatar = () => {
     gameSpace[avatar.prevY][avatar.prevX] = 0;
@@ -90,58 +127,9 @@ let moveDomAvatar = () => {
     let prevBlocks = prevRow.querySelectorAll(".block");
     let prevAvatarPosition = prevBlocks[avatar.prevX];
 
-    avatarPosition.classList.toggle("chao");
-    avatarPosition.classList.toggle("avatar");
-    prevAvatarPosition.classList.toggle("avatar");
-    prevAvatarPosition.classList.toggle("chao");
-};
+    setDomAvatarDirection(avatarPosition);
 
-let updateInventory = (item) => {
-    let inventory = document.querySelector(".inventory > ul");
-    let element = document.createElement('li');
-    element.style.listStyle = "none";
-    // element.style.fontFamily = "'Turret Road', cursive;";
-    element.innerText = item;
-    inventory.appendChild(element);
-};
-
-let hasPreRequisites = (hasList, needsList) => {
-    for (let item of needsList) {
-        if (!hasList.includes(item)) {
-            return false;
-        };
-    };
-    return true;
-};
-
-let interact = (id) => {
-    let speechDiv = document.querySelector(".speech-div");
-    if (tradutor[id]["class"] == "blackboard") {
-        parseBlackBoard();
-    }
-    else if (tradutor[id]["class"] == "computer") {
-        parseComputer();
-    }
-
-    else {
-        if (avatar.collectibles.includes(tradutor[id]["collectible"])) {
-            speechDiv.innerText = "Voce ja tem o que posso te dar";
-        } else if (hasPreRequisites(avatar.collectibles, tradutor[id]["prerequisites"])) {
-            speechDiv.innerText = tradutor[id]["successMessage"];
-            if (tradutor[id]["collectible"]) {
-                if (!avatar.collectibles.includes(tradutor[id]["collectible"])) {
-                    avatar.collectibles.push(tradutor[id]["collectible"]);
-                    updateInventory(tradutor[id]["collectible"]);
-                };
-            };
-        } else {
-            speechDiv.innerText = tradutor[id]["errorMessage"];
-        };
-    };
-
-    setTimeout(() => {
-        speechDiv.innerText = "";
-    }, 4000);
+    prevAvatarPosition.classList = "block chao";
 };
 
 document.addEventListener('keypress', moveAvatar);
