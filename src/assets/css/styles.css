@@ -16,12 +16,16 @@ body {
 
 #room-space {
     background: #e3a586;
+    margin-bottom: 7vw;
     /* border: solid 1px red; */
 }
 
 .speech-div {
-    border: 5px solid #FFB700;
-    min-height: 100px;
+    position: fixed;
+    bottom: 0;
+    border: 0.5vw solid #FFB700;
+    width: 99vw;
+    height: 6vw;
     background: #0C96E8;
     color: white;
     font-family: 'Turret Road', cursive;
@@ -47,8 +51,8 @@ body {
 .block {
     background-size: contain;
     background-repeat: no-repeat; 
-    min-width: 35px;
-    min-height: 35px;
+    min-width: 80px;
+    min-height: 80px;
 }
 
 .big-blackboard {
