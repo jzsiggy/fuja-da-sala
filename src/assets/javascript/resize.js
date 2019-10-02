@@ -8,3 +8,17 @@ window.addEventListener("resize", () => {
         block.style.height = `${blockWidth}px`;
     });
 });
+
+let moveCamera = (avatarDiv) => {
+    let left = avatarDiv.offsetLeft;
+    let top = avatarDiv.offsetTop;
+    let right = window.innerWidth - left;
+    let bottom = window.innerHeight - top;
+    
+    let height = avatarDiv.offsetHeight;
+    let width = avatarDiv.offsetWidth;
+
+    console.log(height, width);
+
+    window.scrollTo((left - right) / 2 + width/2 , (top - bottom) / 2 + height/2)
+};

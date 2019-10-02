@@ -130,6 +130,8 @@ let moveDomAvatar = () => {
     setDomAvatarDirection(avatarPosition);
 
     prevAvatarPosition.classList = "block chao";
+
+    moveCamera(avatarPosition);
 };
 
 document.addEventListener('keypress', moveAvatar);

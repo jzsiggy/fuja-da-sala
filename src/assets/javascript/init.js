@@ -150,7 +150,7 @@ const tradutor = {
         collectible: "",
         prerequisites: ["chave", "plant", "chave da moto"],
         errorMessage: "Ainda nao podes sair",
-        successMessage: "",
+        successMessage: "SAIU",
     },
 }
 
