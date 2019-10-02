@@ -13,5 +13,5 @@ let parseBlackBoard = () => {
 
 let parseComputer = () => {
     console.log("at the computer");
-    let computerWindow = window.open("", "", "width=500,height=300");
+    let computerWindow = window.open("https://hackertyper.net/", "", "width=500,height=300");
 }
