@@ -84,7 +84,6 @@ let moveAvatar = (e) => {
     } else if (e.key == "a") {
         avatar.moveLeft();
     };
-    console.log(avatar.direction);
 };
 
 let toggleDirectionClass = (direction, element) => {

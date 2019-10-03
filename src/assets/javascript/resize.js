@@ -18,7 +18,5 @@ let moveCamera = (avatarDiv) => {
     let height = avatarDiv.offsetHeight;
     let width = avatarDiv.offsetWidth;
 
-    console.log(height, width);
-
     window.scrollTo((left - right) / 2 + width/2 , (top - bottom) / 2 + height/2)
 };
