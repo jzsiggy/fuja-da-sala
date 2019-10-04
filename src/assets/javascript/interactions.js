@@ -123,6 +123,5 @@ let interact = (id) => {
     // }, 2000);
 };
 
-///// personagens que nao tem nenhum collectible para dar sempre falam q vc ja passou por ele //////
-///// change updateInventory to translate avatar.collectibles into innerText, instead of appending always to innertext OR call it addToInventory /////
+/// /// /// /// /// only unnanswered questions re appear
 

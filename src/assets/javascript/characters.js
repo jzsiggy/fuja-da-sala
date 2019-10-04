@@ -43,7 +43,7 @@ const tradutor = {
                 [
                     {pergunta: "ja morei em quantos paises?", opcoes: ["3", "1", "5"], resposta: "5", respondida: false},
                     {pergunta: "Por que eu sumi do curso?", opcoes: ["sou um miguelao", "pregui", "vou pro full"], resposta: "pregui", respondida: false}, 
-                    {pergunta: "", opcoes: ["", "", ""], resposta: "", respondida: false}
+                    // {pergunta: "", opcoes: ["", "", ""], resposta: "", respondida: false}
                 ],
         errorMessage: "THAT IS THE WRONG ANSWER",
         noPrerequisitesMessage: "Vai la colecionar mais coisa, depois se volta! abs!",
