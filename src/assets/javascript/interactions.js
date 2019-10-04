@@ -15,6 +15,19 @@ let hasPreRequisites = (hasList, needsList) => {
     return true;
 };
 
+let unnansweredQuestions = (questions) => {
+    let perguntasRespondidas = 0;
+    questions.forEach(question => {
+        if (question["respondida"]) {
+            perguntasRespondidas++;
+        };
+    });
+    if (perguntasRespondidas == questions.length) {
+        return false
+    };
+    return true;
+};
+
 let askQuestions = (character) => {
     let speechDiv = document.querySelector(".speech-div");
     let opcoesDiv = document.createElement("div");
@@ -22,18 +35,46 @@ let askQuestions = (character) => {
     opcoesDiv.style.justifyContent = "space-between";
     opcoesDiv.style.width = "50%";
 
-    let questNum = 0;
-    let pergunta = character["perguntas"][questNum]["pergunta"];
-    let opcoes = character["perguntas"][questNum]["opcoes"];
-    speechDiv.innerText = pergunta;
-    opcoes.forEach(opcao => {
-        let opcaoItem = document.createElement("p");
-        opcaoItem.innerText = opcao;
-        opcoesDiv.appendChild(opcaoItem);
-    });
-    speechDiv.appendChild(opcoesDiv);
-
-    console.log(pergunta, opcoes)
+    let showQuestion = (questNum) => {
+        let pergunta = character["perguntas"][questNum]["pergunta"];
+        let opcoes = character["perguntas"][questNum]["opcoes"];
+        speechDiv.innerText = pergunta;
+        opcoes.forEach(opcao => {
+            let opcaoItem = document.createElement("p");
+            opcaoItem.innerText = opcao;
+            opcoesDiv.appendChild(opcaoItem);
+        });
+        speechDiv.appendChild(opcoesDiv);
+        speechDiv.addEventListener("click", checkAnswer = (e) => {
+            console.log(e.path[0]["innerText"]);
+            if (e.path[0]["innerText"] == character["perguntas"][questNum]["resposta"]) {
+                speechDiv.removeEventListener("click", checkAnswer);
+                speechDiv.removeChild(opcoesDiv);
+                while (opcoesDiv.firstChild) {
+                    opcoesDiv.removeChild(opcoesDiv.firstChild);
+                };
+                character["perguntas"][questNum]["respondida"] = true;
+                if (unnansweredQuestions(character["perguntas"])) {
+                    showQuestion(questNum + 1);
+                }
+                else {
+                    while (speechDiv.firstChild) {
+                        speechDiv.removeChild(speechDiv.firstChild);
+                    };
+                    speechDiv.innerText = character["successMessage"]
+                    avatar.collectibles.push(character["collectible"]);
+                    updateInventory(character["collectible"]);
+                }
+            } else {
+                while (speechDiv.firstChild) {
+                    speechDiv.removeChild(speechDiv.firstChild);
+                };
+                speechDiv.removeEventListener("click", checkAnswer);
+                speechDiv.innerText = character["errorMessage"]
+            };   
+        });
+    };
+    showQuestion(0);
 };
 
 let interact = (id) => {
@@ -85,14 +126,3 @@ let interact = (id) => {
 ///// personagens que nao tem nenhum collectible para dar sempre falam q vc ja passou por ele //////
 ///// change updateInventory to translate avatar.collectibles into innerText, instead of appending always to innertext OR call it addToInventory /////
 
-
-
-
-
-        // speechDiv.innerText = tradutor[id]["successMessage"];
-        //     if (tradutor[id]["collectible"]) {
-        //         if (!avatar.collectibles.includes(tradutor[id]["collectible"])) {
-        //             avatar.collectibles.push(tradutor[id]["collectible"]);
-        //             updateInventory(tradutor[id]["collectible"]);
-        //         };
-        //     };
