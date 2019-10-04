@@ -20,6 +20,7 @@ body {
 
 #game-window {
     overflow: auto;
+    /* overflow: scroll; */
 }
 
 #room-space {
@@ -29,15 +30,20 @@ body {
 }
 
 .speech-div {
+    -webkit-box-shadow:inset 0px 0px 0px 5px #FFB700;
+    -moz-box-shadow:inset 0px 0px 0px 5px #FFB700;
+    box-shadow:inset 0px 0px 0px 5px #FFB700;
+
     position: fixed;
     bottom: 0;
-    border: 5px solid #FFB700;
-    width: 99vw;
-    height: 90px;
+    /* border: 5px solid #FFB700; */
+    width: 100vw;
+    height: 100px;
     background: #0C96E8;
     color: white;
     font-family: 'Turret Road', cursive;
     display: flex;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -75,7 +81,16 @@ body {
 }
 
 @media only screen and (max-device-width: 480px) {
-    /* html {
-        max-height: 100%;
+    .block {
+        min-width: 60px;
+        min-height: 60px;
+    }
+
+    /* #game-window {
+        height: 350px;
+    }
+
+    .speech-div {
+        top: 250px;
     } */
 }
