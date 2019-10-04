@@ -1,6 +1,6 @@
-html {
+/* html {
     scroll-behavior:smooth;
-}
+} */
 
 body {
     margin: 0;
@@ -20,20 +20,21 @@ body {
 
 #room-space {
     background: #e3a586;
-    margin-bottom: 7vw;
+    margin-bottom: 100px;
     /* border: solid 1px red; */
 }
 
 .speech-div {
     position: fixed;
     bottom: 0;
-    border: 0.5vw solid #FFB700;
+    border: 5px solid #FFB700;
     width: 99vw;
-    height: 6vw;
+    height: 90px;
     background: #0C96E8;
     color: white;
     font-family: 'Turret Road', cursive;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
