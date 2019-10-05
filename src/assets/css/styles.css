@@ -84,10 +84,14 @@ body {
     display: none;
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 600px) {
     .block {
         min-width: 60px;
         min-height: 60px;
+    }
+
+    .inventory {
+        width: 40%;
     }
 
     .game-pad {
@@ -97,7 +101,7 @@ body {
         min-height: 200px;
         min-width: 200px;
         /* background: #0C96E8; */
-        top: 275px;
+        bottom: 125px;
         right: 0px;
     }
 
