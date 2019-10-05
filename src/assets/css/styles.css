@@ -90,16 +90,46 @@ body {
         min-height: 60px;
     }
 
-    .gamepad {
+    .game-pad {
         position: fixed;
         opacity: 0.3;
         display: grid;
         min-height: 200px;
         min-width: 200px;
-        background: #0C96E8;
-        top: 300px;
+        /* background: #0C96E8; */
+        top: 275px;
         right: 0px;
     }
 
-    
+    .game-pad .up {
+        grid-column: 2;
+        grid-row: 1;
+        background-image: url("../images/gamepad/upwards-black-arrow_2b06.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .game-pad .down {
+        grid-column: 2;
+        grid-row: 3;
+        background-image: url("../images/gamepad/downwards-black-arrow_2b07.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .game-pad .right {
+        grid-column: 3;
+        grid-row: 2;
+        background-image: url("../images/gamepad/black-rightwards-arrow_27a1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .game-pad .left {
+        grid-column: 1;
+        grid-row: 2;
+        background-image: url("../images/gamepad/leftwards-black-arrow_2b05.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 }
