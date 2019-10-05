@@ -66,8 +66,8 @@ body {
 .block {
     background-size: contain;
     background-repeat: no-repeat; 
-    min-width: 80px;
-    min-height: 80px;
+    min-width: 100px;
+    min-height: 100px;
 }
 
 .big-blackboard {
@@ -80,17 +80,26 @@ body {
     margin: auto;
 }
 
+.gamepad {
+    display: none;
+}
+
 @media only screen and (max-device-width: 480px) {
     .block {
         min-width: 60px;
         min-height: 60px;
     }
 
-    /* #game-window {
-        height: 350px;
+    .gamepad {
+        position: fixed;
+        opacity: 0.3;
+        display: grid;
+        min-height: 200px;
+        min-width: 200px;
+        background: #0C96E8;
+        top: 300px;
+        right: 0px;
     }
 
-    .speech-div {
-        top: 250px;
-    } */
+    
 }
