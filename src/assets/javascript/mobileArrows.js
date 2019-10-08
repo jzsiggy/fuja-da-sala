@@ -1,4 +1,4 @@
-if (window.innerWidth <= 600) {
+if (onMobile()) {
     let upArrow = document.querySelector(".up");
     let downArrow = document.querySelector(".down");
     let leftArrow = document.querySelector(".left");

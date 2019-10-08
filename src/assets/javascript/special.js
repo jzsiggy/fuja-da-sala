@@ -1,14 +1,25 @@
 let parseBlackBoard = () => {
     console.log("at the blackboard");
     let blackboard = document.querySelector(".big-blackboard");
-    blackboard.classList.remove("hide");
+    setTimeout(() => {
+        blackboard.classList.remove("hide");
+    }, 100);
     
-    document.addEventListener('keypress', removeBlackboard = (event) => {
-        if (event.key == "q") {
-            blackboard.classList.add("hide");
-            document.removeEventListener("keypress", removeBlackboard);
-        };
-    });
+    if (!onMobile()) {
+        document.addEventListener('keypress', removeBlackboard = (event) => {
+            if (event.key == "q") {
+                blackboard.classList.add("hide");
+                document.removeEventListener("keypress", removeBlackboard);
+            };
+        });
+    } else {
+        document.addEventListener('click', removeBlackboard = (event) => {
+            if (!event.target.classList.contains("big-blackboard")) {
+                blackboard.classList.add("hide");
+                document.removeEventListener("keypress", removeBlackboard);
+            };
+        });
+    };
 };
 
 let parseComputer = () => {
@@ -21,5 +32,9 @@ let parseTable = () => {
 }
 
 let parseDoor = () => {
-    
+    if (avatar.collectibles.includes("CHAVE")) {
+        console.log("SAIU");
+    } else {
+        console.log("Nao POTE");
+    }
 }

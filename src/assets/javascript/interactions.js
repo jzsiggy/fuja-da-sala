@@ -33,7 +33,11 @@ let askQuestions = (character) => {
     let opcoesDiv = document.createElement("div");
     opcoesDiv.style.display = "flex";
     opcoesDiv.style.justifyContent = "space-between";
-    opcoesDiv.style.width = "50%";
+    if (onMobile()) {
+        opcoesDiv.style.width = "90%";
+    } else {
+        opcoesDiv.style.width = "50%";
+    };
 
     let showQuestion = (questNum) => {
         let pergunta = character["perguntas"][questNum]["pergunta"];

@@ -84,7 +84,8 @@ body {
     display: none;
 }
 
-@media only screen and (max-device-width: 600px) {
+@media only screen and (max-device-width: 600px),  (max-device-height: 600px) {
+    
     .block {
         min-width: 60px;
         min-height: 60px;
@@ -92,6 +93,11 @@ body {
 
     .inventory {
         width: 40%;
+    }
+
+    .big-blackboard {
+        max-width: 80vw;
+        max-height: 80vw;
     }
 
     .game-pad {
