@@ -1,3 +1,10 @@
+let giveItAShake = (div) => {
+    div.classList.add("shake");
+            setTimeout(() => {
+                div.classList.remove("shake");
+            }, 500);
+}
+
 let updateInventory = (item) => {
     let inventory = document.querySelector(".inventory > ul");
     let element = document.createElement('li');
@@ -99,11 +106,11 @@ let interact = (id) => {
     else {
         console.log(tradutor[id])
         if (avatar.collectibles.includes(tradutor[id]["collectible"])) {
-            console.log("vc ja tem");
             speechDiv.innerText = "Ja passou por aqui IRMAO";
         } 
         else if (!hasPreRequisites(avatar.collectibles, tradutor[id]["prerequisites"])) {
-            console.log("vc ainda n pode");
+            let personagemDiv = document.querySelector(`.${tradutor[id]["class"]}`);
+            giveItAShake(personagemDiv);
             speechDiv.innerText = tradutor[id]["noPrerequisitesMessage"];
         }
         else {

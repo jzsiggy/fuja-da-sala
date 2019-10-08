@@ -32,9 +32,14 @@ let parseTable = () => {
 }
 
 let parseDoor = () => {
+    let door = document.querySelector(".door")
     if (avatar.collectibles.includes("CHAVE")) {
         console.log("SAIU");
     } else {
         console.log("Nao POTE");
-    }
-}
+        door.classList.add("shake")
+        setTimeout(() => {
+            door.classList.remove("shake")
+        }, 500);
+    };
+};
