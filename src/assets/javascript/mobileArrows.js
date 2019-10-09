@@ -5,22 +5,26 @@ if (onMobile()) {
     let rightArrow = document.querySelector(".right");
 
     upArrow.addEventListener("click", () => {
-        console.log("up");
-        avatar.moveUp();
+        if (!avatar.isInteracting) {
+            avatar.moveUp();
+        };
     });
 
     downArrow.addEventListener("click", () => {
-        console.log("down");
-        avatar.moveDown();
+        if (!avatar.isInteracting) {
+            avatar.moveDown();
+        };
     });
 
     leftArrow.addEventListener("click", () => {
-        console.log("left");
-        avatar.moveLeft();
+        if (!avatar.isInteracting) {
+            avatar.moveLeft();
+        };
     });
 
     rightArrow.addEventListener("click", () => {
-        console.log("right");
-        avatar.moveRight();
+        if (!avatar.isInteracting) {
+            avatar.moveRight();
+        };
     });
 }

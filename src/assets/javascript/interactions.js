@@ -85,6 +85,7 @@ let askQuestions = (character) => {
                     speechDiv.innerText = character["successMessage"]
                     avatar.collectibles.push(character["collectible"]);
                     updateInventory(character["collectible"]);
+                    avatar.isInteracting = false;
                 }
             } else {
                 while (speechDiv.firstChild) {
@@ -92,6 +93,9 @@ let askQuestions = (character) => {
                 };
                 speechDiv.removeEventListener("click", checkAnswer);
                 speechDiv.innerText = character["errorMessage"]
+                giveItAShake(document.querySelector(`.${character.class}`));
+                avatar.life -= 10;
+                avatar.isInteracting = false;
             };   
         });
     };
@@ -99,6 +103,7 @@ let askQuestions = (character) => {
 };
 
 let interact = (id) => {
+    avatar.isInteracting = true;
     let speechDiv = document.querySelector(".speech-div");
     if (tradutor[id]["class"] == "blackboard") {
         parseBlackBoard();
@@ -120,10 +125,12 @@ let interact = (id) => {
         if (avatar.collectibles.includes(tradutor[id]["collectible"])) {
             giveItAShake(personagemDiv);
             speechDiv.innerText = "Ja passou por aqui IRMAO";
+            avatar.isInteracting = false;
         } 
         else if (!hasPreRequisites(avatar.collectibles, tradutor[id]["prerequisites"])) {
             giveItAShake(personagemDiv);
             speechDiv.innerText = tradutor[id]["noPrerequisitesMessage"];
+            avatar.isInteracting = false;
         }
         else {
             speechDiv.innerText = tradutor[id]["firstMessage"];
@@ -132,6 +139,7 @@ let interact = (id) => {
                 avatar.collectibles.push(tradutor[id]["collectible"]);
                 speechDiv.innerText = tradutor[id]["successMessage"];
                 updateInventory(tradutor[id]["collectible"]);
+                avatar.isInteracting = false;
             }
             else {
                 console.log("ha perg");
@@ -141,9 +149,6 @@ let interact = (id) => {
             };
         };
     };
-    // setTimeout(() => {
-    //     speechDiv.innerText = "";
-    // }, 2000);
 };
 
 /// /// /// /// /// only unnanswered questions re appear

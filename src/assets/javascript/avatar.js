@@ -6,6 +6,8 @@ class Avatar {
         this.direction = "up";
         this.prevDirection = "";
         this.class = "avatar-up-1";
+        this.isInteracting = false;
+        this.life = 100;
     };
     moveUp() {
         this.prevDirection = this.direction;
@@ -70,19 +72,25 @@ class Avatar {
             return  false;
         };
     };
+    showLife() {
+        let roomSpace = document.querySelector("#room-space");
+        let lifeBar = document
+    };
 };
 
 let avatar = new Avatar(0, 5);
 
 let moveAvatar = (e) => {
-    if (e.key == "w") {
-        avatar.moveUp();
-    } else if (e.key == "s") {
-        avatar.moveDown();
-    } else if (e.key == "d") {
-        avatar.moveRight();
-    } else if (e.key == "a") {
-        avatar.moveLeft();
+    if (!avatar.isInteracting) {
+        if (e.key == "w") {
+            avatar.moveUp();
+        } else if (e.key == "s") {
+            avatar.moveDown();
+        } else if (e.key == "d") {
+            avatar.moveRight();
+        } else if (e.key == "a") {
+            avatar.moveLeft();
+        };
     };
 };
 

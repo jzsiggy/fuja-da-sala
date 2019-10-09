@@ -10,6 +10,7 @@ let parseBlackBoard = () => {
             if (event.key == "q") {
                 blackboard.classList.add("hide");
                 document.removeEventListener("keypress", removeBlackboard);
+                avatar.isInteracting = false;
             };
         });
     } else {
@@ -17,6 +18,7 @@ let parseBlackBoard = () => {
             if (!event.target.classList.contains("big-blackboard")) {
                 blackboard.classList.add("hide");
                 document.removeEventListener("keypress", removeBlackboard);
+                avatar.isInteracting = false;
             };
         });
     };
@@ -28,7 +30,7 @@ let parseComputer = () => {
 }
 
 let parseTable = () => {
-
+    avatar.isInteracting = false;
 }
 
 let parseDoor = () => {
@@ -42,4 +44,5 @@ let parseDoor = () => {
             door.classList.remove("shake")
         }, 500);
     };
+    avatar.isInteracting = false;
 };
