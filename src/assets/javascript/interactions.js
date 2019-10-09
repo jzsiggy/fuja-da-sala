@@ -95,6 +95,7 @@ let askQuestions = (character) => {
                 speechDiv.innerText = character["errorMessage"]
                 giveItAShake(document.querySelector(`.${character.class}`));
                 avatar.life -= 10;
+                avatar.updateLife();
                 avatar.isInteracting = false;
             };   
         });

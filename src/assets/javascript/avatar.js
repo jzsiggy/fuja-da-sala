@@ -74,11 +74,23 @@ class Avatar {
     };
     showLife() {
         let roomSpace = document.querySelector("#room-space");
-        let lifeBar = document
+        let lifeBar = document.createElement("div");
+        lifeBar.style.width = `${this.life * 2}px`;
+        lifeBar.style.height = `25px`;
+        lifeBar.style.position = "fixed";
+        lifeBar.style.bottom = "120px";
+        lifeBar.style.backgroundColor = "green";
+        this.lifeDiv = lifeBar;
+        
+        roomSpace.appendChild(lifeBar)
     };
+    updateLife() {
+        this.lifeDiv.style.width = `${this.life * 2}px`;
+    }
 };
 
 let avatar = new Avatar(0, 5);
+avatar.showLife();
 
 let moveAvatar = (e) => {
     if (!avatar.isInteracting) {
