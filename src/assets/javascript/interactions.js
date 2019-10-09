@@ -47,6 +47,16 @@ let askQuestions = (character) => {
     };
 
     let showQuestion = (questNum) => {
+        
+        let skipAnsweredQuestion = (index) => {
+            if (character["perguntas"][index]["respondida"]) {
+                questNum++;
+                skipAnsweredQuestion(questNum);
+            };
+        };
+
+        skipAnsweredQuestion(questNum);
+
         let pergunta = character["perguntas"][questNum]["pergunta"];
         let opcoes = character["perguntas"][questNum]["opcoes"];
         speechDiv.innerText = pergunta;
@@ -104,12 +114,14 @@ let interact = (id) => {
     }
 
     else {
-        console.log(tradutor[id])
+        console.log(tradutor[id]);
+        let personagemDiv = document.querySelector(`.${tradutor[id]["class"]}`);
+
         if (avatar.collectibles.includes(tradutor[id]["collectible"])) {
+            giveItAShake(personagemDiv);
             speechDiv.innerText = "Ja passou por aqui IRMAO";
         } 
         else if (!hasPreRequisites(avatar.collectibles, tradutor[id]["prerequisites"])) {
-            let personagemDiv = document.querySelector(`.${tradutor[id]["class"]}`);
             giveItAShake(personagemDiv);
             speechDiv.innerText = tradutor[id]["noPrerequisitesMessage"];
         }
