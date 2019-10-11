@@ -21,8 +21,12 @@ class Timer {
     updateSeconds() {
         this.seconds--;
         if (this.seconds == 0) {
-            this.seconds = 59;
-            this.minutes--;
+            if (this.minutes == 0) {
+                gameOver("lose");
+            } else {
+                this.seconds = 59;
+                this.minutes--;
+            };
         };
         this.div.innerText = `00 : 0${this.minutes} : ${doubleDigits(this.seconds)}`;
     };
@@ -36,8 +40,12 @@ let doubleDigits = (seconds) => {
     };
 };
 
-let timer = new Timer(4, 20);
+let timer = new Timer(0, 10);
+
 timer.show();
+
 setInterval(() => {
-    timer.updateSeconds();
+    if (!avatar.isGameOver) {
+        timer.updateSeconds();
+    };
 }, 1000);

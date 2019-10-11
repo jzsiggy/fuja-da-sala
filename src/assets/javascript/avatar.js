@@ -7,7 +7,8 @@ class Avatar {
         this.prevDirection = "";
         this.class = "avatar-up-1";
         this.isInteracting = false;
-        this.life = 100;
+        this.life = 20;
+        this.isGameOver = false
     };
     moveUp() {
         this.prevDirection = this.direction;

@@ -96,7 +96,11 @@ let askQuestions = (character) => {
                 giveItAShake(document.querySelector(`.${character.class}`));
                 avatar.life -= 10;
                 avatar.updateLife();
-                avatar.isInteracting = false;
+                if (avatar.life < 1) {
+                    gameOver("lose");
+                } else {
+                    avatar.isInteracting = false;
+                };
             };   
         });
     };
