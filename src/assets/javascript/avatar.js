@@ -7,7 +7,7 @@ class Avatar {
         this.prevDirection = "";
         this.class = "avatar-up-1";
         this.isInteracting = false;
-        this.life = 20;
+        this.life = 100;
         this.isGameOver = false
     };
     moveUp() {
@@ -80,7 +80,13 @@ class Avatar {
         lifeBar.style.height = `25px`;
         lifeBar.style.position = "fixed";
         lifeBar.style.bottom = "120px";
+        lifeBar.style.left = "5%";
         lifeBar.style.backgroundColor = "green";
+        lifeBar.innerText = "LIFE";
+        lifeBar.style.color = "white";
+        lifeBar.style.fontWeight = "bolder";
+        lifeBar.style.fontFamily = "turret road"
+        lifeBar.style.fontSize = "25px";
         this.lifeDiv = lifeBar;
         
         roomSpace.appendChild(lifeBar)

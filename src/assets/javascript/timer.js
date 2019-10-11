@@ -40,7 +40,7 @@ let doubleDigits = (seconds) => {
     };
 };
 
-let timer = new Timer(0, 10);
+let timer = new Timer(2, 10);
 
 timer.show();
 

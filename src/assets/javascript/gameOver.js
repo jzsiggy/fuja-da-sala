@@ -47,7 +47,8 @@ let restart = () => {
     let inventoryDiv = document.querySelector(".inventory > ul");
 
     avatar.collectibles = [];
-    avatar.life = 20;
+    avatar.life = 100;
+    avatar.showLife();
     timer.minutes = 4;
     timer.seconds = 59;
     body.removeChild(endScreen);

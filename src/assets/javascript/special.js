@@ -37,6 +37,7 @@ let parseDoor = () => {
     let door = document.querySelector(".door")
     if (avatar.collectibles.includes("CHAVE")) {
         console.log("SAIU");
+        gameOver("win")
     } else {
         console.log("Nao POTE");
         door.classList.add("shake")
