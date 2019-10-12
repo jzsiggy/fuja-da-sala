@@ -27,9 +27,9 @@ const tradutor = {
         firstMessage: "",
         perguntas: 
                 [
-                    {pergunta: "aonde eu trampo?", opcoes: ["rock in rio", "safra", "bebidas enlatadas SA"], resposta: "safra", respondida: false},
+                    {pergunta: "aonde eu trampo?", opcoes: ["rock in rio", "Carrefour Bank", "bebidas enlatadas SA"], resposta: "safra", respondida: false},
                     {pergunta: "banda favorita", opcoes: ["mamonas assasinas", "beatles", "kelly kelly"], resposta: "beatles", respondida: false}, 
-                    {pergunta: "bebida favorita", opcoes: ["FoDka", "guarana", "sukinho de UVA"], resposta: "FoDka", respondida: false}
+                    
                 ],
         errorMessage: "",
         successMessage: "",
@@ -43,7 +43,7 @@ const tradutor = {
                 [
                     {pergunta: "ja morei em quantos paises?", opcoes: ["3", "1", "5"], resposta: "5", respondida: false},
                     {pergunta: "Por que eu sumi do curso?", opcoes: ["sou um miguelao", "pregui", "vou pro full"], resposta: "pregui", respondida: false}, 
-                    // {pergunta: "", opcoes: ["", "", ""], resposta: "", respondida: false}
+                    {pergunta: "bebida favorita", opcoes: ["FoDka", "guarana", "sukinho de UVA"], resposta: "FoDka", respondida: false}
                 ],
         errorMessage: "THAT IS THE WRONG ANSWER",
         noPrerequisitesMessage: "Vai la colecionar mais coisa, depois se volta! abs!",
@@ -86,13 +86,11 @@ const tradutor = {
         firstMessage: "salve, salve",
         perguntas: 
                 [
-                    {pergunta: "", opcoes: ["", "", ""], resposta: "", respondida: false},
-                    {pergunta: "", opcoes: ["", "", ""], resposta: "", respondida: false}, 
-                    {pergunta: "", opcoes: ["", "", ""], resposta: "", respondida: false}
+                    {pergunta: "Agora que você ja conheceu melhor todo mundo, Toma aqui sua chave! vaza Irmãozinho!", opcoes: ["valeu"], resposta: "valeu", respondida: false},
                 ],
         errorMessage: "Precisa conhecer mais xuxu de aboboras. bjk",
         noPrerequisitesMessage: "Brodi, pra falar com o pops tem que falar com os outros.",
-        successMessage: "Eu sou Juks",
+        successMessage: "Adeus!",
     },
     8: {
         class: "coe",
